@@ -2,7 +2,7 @@
 
 public class utente
 {
-    public static void Main(string[] args){
+    public static void utente.Main(string[] args){
         Console.WriteLine("Enter name: ")
         console.Writeline("Enter surname: ")
 
@@ -16,7 +16,7 @@ public class utente
 
 public class login
 {
-	public login()
+	public static void login.Main(string[] args)()
 	{
         // Type your username and press enter
         Console.WriteLine("Enter username:");
