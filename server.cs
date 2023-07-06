@@ -1,5 +1,19 @@
 ﻿using System;
 
+public class utente
+{
+    public static void Main(string[] args){
+        Console.WriteLine("Enter name: ")
+        console.Writeline("Enter surname: ")
+
+        string name = console.readline();
+        string surname =console.readline();
+
+        console.WriteLine(name);
+        console.WriteLine(surname);
+    }
+}
+
 public class login
 {
 	public login()
@@ -40,7 +54,7 @@ public class login
 
 public class ckeckemail
 {
-    public class checkemail()
+    public  checkemail()
     {
         public static bool IsValidEmail(string email)
     {
