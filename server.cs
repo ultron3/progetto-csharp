@@ -37,3 +37,37 @@ public class login
         }
     }
 }
+
+public class ckeckemail
+{
+    public class checkemail()
+    {
+        public static bool IsValidEmail(string email)
+    {
+        // Pattern di espressione regolare per la verifica dell'email
+        string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+
+        // Verifica se l'email corrisponde al pattern
+        Match match = Regex.Match(email, pattern);
+
+        // Restituisce true se l'email è valida, altrimenti false
+        return match.Success;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.Write("Inserisci un indirizzo email: ");
+        string email = Console.ReadLine();
+
+        if (IsValidEmail(email))
+        {
+            Console.WriteLine("L'indirizzo email è valido.");
+        }
+        else
+        {
+            Console.WriteLine("L'indirizzo email non è valido.");
+        }
+    }
+    }
+
+}
