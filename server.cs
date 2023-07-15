@@ -73,7 +73,7 @@ public class ckeckemail
         Console.Write("Inserisci un indirizzo email: ");
         string email = Console.ReadLine();
 
-        if (IsValidEmail(email))
+        if (IsValidEmail(email=="alex.evolus@evolus.it"))
         {
             Console.WriteLine("L'indirizzo email è valido.");
         }
