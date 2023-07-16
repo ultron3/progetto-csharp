@@ -4,38 +4,71 @@ public class ATM
 {
   public static void Main(string[] args)
   {
-    Console.WriteLine("Hello World");
-     int budget = 10000;
+    int budget = 10000;
+    string opzione;
 
-    Console.WriteLine("Inserisci un'opzione:");
-    string opzione = Console.ReadLine();
+    Console.WriteLine("Benvenuto");
 
-    switch (opzione)
+    do
     {
-      case "balance":
-        
-        Console.Writeline("hai un budget  di: " + budget);
-        break;
+      Console.WriteLine("Inserisci un'opzione:");
+      opzione = Console.ReadLine();
 
-      case "withdraw":
-       
-        Console.WriteLine("Inserisci l'importo da prelevare:");
-        int money = Convert.ToInt32(Console.ReadLine());
-        int result = budget - money;
-        Console.WriteLine("Hai prelevato: " + money);
-        Console.WriteLine("Ti rimane un budget di: " + result);
-        break;
-      case "deposit":
-       
-        Console.WriteLine("Inserisci il denaro:");
-        int money1 = Convert.ToInt32(Console.ReadLine());
-        int result_deposit = budget + money1;
-        Console.WriteLine("Hai depositato: " + money1);
-        Console.WriteLine("Hai un budget di: " + result_deposit);
-        break;
-      default:
-        Console.WriteLine("Opzione non valida.");
-        break;
-    }
+      switch (opzione)
+      {
+        case "balance":
+          Console.WriteLine("Hai un budget di: " + budget);
+          break;
+
+        case "withdraw":
+          Console.WriteLine("Inserisci l'importo da prelevare:");
+          if (int.TryParse(Console.ReadLine(), out int money))
+          {
+            int result = budget - money;
+            Console.WriteLine("Hai prelevato: " + money);
+            Console.WriteLine("Ti rimane un budget di: " + result);
+            budget = result; // Aggiorna il budget con il risultato
+          }
+          else
+          {
+            Console.WriteLine("Input non valido. Inserisci un importo valido.");
+          }
+          break;
+
+        case "deposit":
+          Console.WriteLine("Inserisci il denaro:");
+          if (int.TryParse(Console.ReadLine(), out int money1))
+          {
+            int result_deposit = budget + money1;
+            Console.WriteLine("Hai depositato: " + money1);
+            Console.WriteLine("Hai un budget di: " + result_deposit);
+            budget = result_deposit; // Aggiorna il budget con il risultato
+          }
+          else
+          {
+            Console.WriteLine("Input non valido. Inserisci un importo valido.");
+          }
+          break;
+        case "movements":
+          Console.WriteLine("Ultimi 3 movimenti:");
+          DisplayMovements();
+          break;
+
+        case "exit":
+          Console.WriteLine("Grazie per aver utilizzato l'ATM. Arrivederci!");
+          break;
+
+        default:
+          Console.WriteLine("Opzione non valida.");
+          break;
+      }
+
+    } while (opzione != "exit");
+  }
+  private static void DisplayMovements()
+  {
+    Console.WriteLine("Movimento 1: €100 - Stroili");
+    Console.WriteLine("Movimento 2: €200 - Deposito");
+    Console.WriteLine("Movimento 3: €50 - Prelevato");
   }
 }
