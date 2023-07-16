@@ -7,46 +7,46 @@ public class ATM
     int budget = 10000;
     string opzione;
 
-    Console.WriteLine("Benvenuto");
+    Console.WriteLine("Welcome");
 
     do
     {
-      Console.WriteLine("Inserisci un'opzione:");
+      Console.WriteLine("Enter a option:");
       opzione = Console.ReadLine();
 
       switch (opzione)
       {
         case "balance":
-          Console.WriteLine("Hai un budget di: " + budget);
+          Console.WriteLine("Have a budget of: " + budget);
           break;
 
         case "withdraw":
-          Console.WriteLine("Inserisci l'importo da prelevare:");
+          Console.WriteLine("Enter  a import of withdraw:");
           if (int.TryParse(Console.ReadLine(), out int money))
           {
             int result = budget - money;
-            Console.WriteLine("Hai prelevato: " + money);
-            Console.WriteLine("Ti rimane un budget di: " + result);
+            Console.WriteLine("you picked up: " + money);
+            Console.WriteLine("you are left with a balance of: " + result);
             budget = result; // Aggiorna il budget con il risultato
           }
           else
           {
-            Console.WriteLine("Input non valido. Inserisci un importo valido.");
+            Console.WriteLine("Invalid input. Please enter a valid amount.");
           }
           break;
 
         case "deposit":
-          Console.WriteLine("Inserisci il denaro:");
+          Console.WriteLine("deposit money here:");
           if (int.TryParse(Console.ReadLine(), out int money1))
           {
             int result_deposit = budget + money1;
-            Console.WriteLine("Hai depositato: " + money1);
-            Console.WriteLine("Hai un budget di: " + result_deposit);
+            Console.WriteLine("you deposited: " + money1);
+            Console.WriteLine("you have a budget of: " + result_deposit);
             budget = result_deposit; // Aggiorna il budget con il risultato
           }
           else
           {
-            Console.WriteLine("Input non valido. Inserisci un importo valido.");
+            Console.WriteLine("Invalid input. Please enter a valid amount.");
           }
           break;
         case "movements":
@@ -54,12 +54,18 @@ public class ATM
           DisplayMovements();
           break;
 
+        case "recharge":
+          Console.WriteLine("recharge mobile phone");
+          DisplayRecharge();
+          break
+       
+
         case "exit":
-          Console.WriteLine("Grazie per aver utilizzato l'ATM. Arrivederci!");
+          Console.WriteLine("Thanks for using the ATM. Until we meet again!");
           break;
 
         default:
-          Console.WriteLine("Opzione non valida.");
+          Console.WriteLine("Invalid option");
           break;
       }
 
@@ -67,8 +73,16 @@ public class ATM
   }
   private static void DisplayMovements()
   {
-    Console.WriteLine("Movimento 1: €100 - Stroili");
-    Console.WriteLine("Movimento 2: €200 - Deposito");
-    Console.WriteLine("Movimento 3: €50 - Prelevato");
+    Console.WriteLine("15/07/2023: €100 - Stroili");
+    Console.WriteLine("15/07/2023: €200 - Deposito");
+    Console.WriteLine("16/07/2023: €50 - Prelevato");
+  }
+
+  private static void DisplayRecharge()
+  {
+    Console.WriteLine("Vodafone");
+    Console.WriteLine("WindTre");
+    Console.WriteLine("tim");
+
   }
 }
