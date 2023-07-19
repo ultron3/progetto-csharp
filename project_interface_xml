@@ -1,0 +1,48 @@
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+
+
+class Program
+{
+    static void Main(string)
+    {
+        IXmlDataHandler xmlDataHandler = new XmlDataHandler();
+
+        // Dati di esempio da salvare e caricare
+        var data = new DatiUtente { Nome = "Mario", Eta = 30 };
+
+        // Salva i dati in un file XML
+        xmlDataHandler.SaveToXml("dati.xml", data);
+        Console.WriteLine("Dati salvati con successo in dati.xml");
+
+        // Carica i dati da un file XML
+        var datiCaricati = xmlDataHandler.LoadFromXml("dati.xml");
+        Console.WriteLine($"Nome: {datiCaricati.Nome}");
+        Console.WriteLine($"Età: {datiCaricati.Eta}");
+    }
+}
+
+
+public class XmlDataHandler : IXmlDataHandler
+{
+    public void SaveToXml(string filePath, DatiUtente data)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(DatiUtente));
+
+        using (var writer = new StreamWriter(filePath))
+        {
+            serializer.Serialize(writer, data);
+        }
+    }
+
+    public DatiUtente LoadFromXml(string filePath)
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(DatiUtente));
+
+        using (var reader = new StreamReader(filePath))
+        {
+            return (DatiUtente)serializer.Deserialize(reader);
+        }
+    }
+}
